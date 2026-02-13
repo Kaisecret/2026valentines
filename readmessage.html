@@ -29,35 +29,30 @@
 </head>
 <body class="bg-blush font-body overflow-hidden">
 
-    <div id="app-container" class="relative w-full h-screen flex flex-col items-center justify-center">
+    <div id="app-container" class="relative w-full h-[100dvh] flex flex-col items-center justify-center">
         <div id="hearts-container" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
         <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(255,255,255,0.4)_100%)] z-0"></div>
 
-        <div class="relative z-10 w-full max-w-md h-full sm:h-[90vh] sm:rounded-3xl sm:shadow-2xl sm:border-4 sm:border-white/50 bg-white/30 backdrop-blur-sm overflow-hidden flex flex-col">
+        <div class="relative z-10 w-full max-w-md h-full bg-white/30 backdrop-blur-sm overflow-hidden flex flex-col sm:h-[90vh] sm:rounded-3xl sm:shadow-2xl sm:border-4 sm:border-white/50">
             
-            <div class="flex flex-col items-center h-full w-full relative overflow-y-auto overflow-x-hidden bg-[#FADADD]">
+            <div class="flex flex-col items-center h-full w-full relative bg-[#FADADD]">
                 
-                <!-- Header -->
-                <div id="msg-header" class="w-full p-4 flex items-center justify-between absolute top-0 z-50">
-                    <a href="home.html" class="p-3 bg-white/80 rounded-full text-rose-600 shadow-sm border border-white hover:scale-105 transition-transform">
+                <!-- Header (Hidden when letter is open to save space) -->
+                <div id="msg-header" class="w-full p-4 flex items-center justify-between absolute top-0 z-50 transition-opacity duration-300">
+                    <a href="index.html" class="p-3 bg-white/80 rounded-full text-rose-600 shadow-sm border border-white hover:scale-105 transition-transform">
                         <i data-lucide="arrow-left" class="w-5 h-5"></i>
                     </a>
                     <div class="text-rose-500 font-hand text-xl drop-shadow-sm font-bold">My Letter</div>
                     <div class="w-10"></div> 
                 </div>
         
-                <div class="flex-1 flex flex-col items-center justify-center w-full min-h-[600px] pb-8 px-4 perspective-1000">
+                <div class="flex-1 flex flex-col items-center justify-center w-full px-4 perspective-1000">
                     
                     <!-- Envelope State -->
                     <div id="envelope-wrapper" class="relative cursor-pointer group transition-all duration-500">
                         <div class="relative w-80 h-64">
-                             <!-- Shadow -->
                              <div class="absolute top-4 left-4 w-full h-full bg-black/10 rounded-3xl"></div>
-            
-                             <!-- Envelope Back -->
                              <div class="absolute inset-0 bg-rose-300 rounded-3xl border-[6px] border-[#8B3A4F] translate-y-2"></div>
-            
-                             <!-- Card (Peeking) -->
                              <div id="peeking-card" class="absolute left-6 right-6 top-[-50px] bottom-6 bg-white rounded-2xl border-[5px] border-[#8B3A4F] flex flex-col items-center justify-center p-4 shadow-sm transition-transform duration-300 hover:-translate-y-8">
                                  <div class="absolute top-6 left-6 w-1.5 h-16 bg-[#8B3A4F] rounded-full opacity-80"></div>
                                  <div class="relative w-full h-full flex items-center justify-center translate-y-4">
@@ -69,19 +64,14 @@
                                     </svg>
                                  </div>
                              </div>
-            
-                             <!-- Front Pocket -->
                              <div class="absolute bottom-0 left-0 right-0 h-40 bg-rose-400 rounded-b-3xl border-[6px] border-[#8B3A4F] z-20 flex items-start justify-center overflow-hidden">
                                  <svg viewBox="0 0 100 50" class="absolute top-0 w-full h-full" preserveAspectRatio="none">
                                     <path d="M0 0 L50 40 L100 0" fill="none" stroke="#8B3A4F" stroke-width="3" />
                                  </svg>
                              </div>
-                             
-                             <!-- Side Flaps -->
                              <div class="absolute bottom-0 left-0 w-10 h-40 bg-rose-400 border-l-[6px] border-b-[6px] border-[#8B3A4F] rounded-bl-3xl z-20"></div>
                              <div class="absolute bottom-0 right-0 w-10 h-40 bg-rose-400 border-r-[6px] border-b-[6px] border-[#8B3A4F] rounded-br-3xl z-20"></div>
                         </div>
-                        
                         <div class="mt-16 text-center animate-fade-in-delayed">
                             <span class="bg-white/90 backdrop-blur px-6 py-3 rounded-full text-[#8B3A4F] font-bold shadow-lg border-2 border-rose-200 animate-bounce inline-block">
                               Tap to Open 💌
@@ -89,49 +79,50 @@
                         </div>
                     </div>
         
-                    <!-- Letter State (Hidden initially) -->
-                    <div id="opened-letter" class="hidden w-full max-w-md bg-[#fff9fb] rounded-xl shadow-2xl relative overflow-hidden mx-4 my-8 flex-col border border-rose-100 animate-pop-in" style="min-height: 600px;">
+                    <!-- Letter State (Revised for Internal Scroll) -->
+                    <!-- Fixed height relative to viewport ensuring it fits on screen -->
+                    <div id="opened-letter" class="hidden w-full max-w-md h-[80vh] bg-[#fff9fb] rounded-xl shadow-2xl relative overflow-hidden flex-col border border-rose-100 animate-pop-in">
                        
-                       <div class="h-40 bg-rose-50 relative overflow-hidden flex flex-col items-center justify-center border-b border-rose-100">
+                       <!-- Fixed Header -->
+                       <div class="shrink-0 h-32 bg-rose-50 relative overflow-hidden flex flex-col items-center justify-center border-b border-rose-100">
                            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#e11d48 1px, transparent 1px); background-size: 20px 20px;"></div>
-                           
-                           <div class="z-10 text-center p-4">
-                               <div class="inline-block p-3 bg-white rounded-full shadow-sm mb-2">
-                                  <i data-lucide="heart" class="text-rose-500 fill-rose-500 w-8 h-8"></i>
+                           <div class="z-10 text-center p-2">
+                               <div class="inline-block p-2 bg-white rounded-full shadow-sm mb-1">
+                                  <i data-lucide="heart" class="text-rose-500 fill-rose-500 w-6 h-6"></i>
                                </div>
-                               <h2 class="font-hand text-3xl text-rose-600 drop-shadow-sm" id="msg-title"></h2>
+                               <h2 class="font-hand text-2xl text-rose-600 drop-shadow-sm" id="msg-title"></h2>
                            </div>
+                           <button id="close-letter-btn" class="absolute top-4 right-4 bg-white/80 hover:bg-white p-2 rounded-full text-rose-400 transition-colors z-20 shadow-sm">
+                             <i data-lucide="x" class="w-5 h-5"></i>
+                           </button>
                        </div>
         
-                       <button id="close-letter-btn" class="absolute top-4 right-4 bg-white/80 hover:bg-white p-2 rounded-full text-rose-400 transition-colors z-20 shadow-sm">
-                         <i data-lucide="x" class="w-5 h-5"></i>
-                       </button>
-        
-                       <div class="p-8 flex-1 bg-white relative">
-                          <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
-                              <i data-lucide="heart" class="w-64 h-64"></i>
+                       <!-- Scrollable Body -->
+                       <div class="flex-1 overflow-y-auto bg-white relative p-6">
+                          <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none fixed">
+                              <i data-lucide="heart" class="w-48 h-48"></i>
                           </div>
         
-                          <div id="msg-body" class="prose prose-pink max-w-none font-body text-gray-700 leading-relaxed text-lg text-center relative z-10">
+                          <div id="msg-body" class="prose prose-pink max-w-none font-body text-gray-700 leading-relaxed text-base text-center relative z-10">
                               <!-- Content injected by JS -->
                           </div>
         
-                          <div class="mt-12 flex flex-col items-center justify-center space-y-2">
-                              <div class="w-24 h-1 bg-gradient-to-r from-transparent via-rose-300 to-transparent"></div>
-                              <p class="font-hand text-2xl text-rose-500">Love, Me</p>
+                          <div class="mt-8 flex flex-col items-center justify-center space-y-2 pb-4">
+                              <div class="w-16 h-1 bg-gradient-to-r from-transparent via-rose-300 to-transparent"></div>
+                              <p class="font-hand text-xl text-rose-500">Love, Me</p>
                           </div>
                        </div>
         
-                       <div class="h-6 bg-rose-50 border-t border-rose-100 flex items-center justify-between px-4">
-                          <div class="text-[10px] text-rose-300 uppercase tracking-widest">Valentine's Collection</div>
-                          <div class="flex space-x-1">
-                              <div class="w-2 h-2 rounded-full bg-rose-200"></div>
-                              <div class="w-2 h-2 rounded-full bg-rose-300"></div>
-                              <div class="w-2 h-2 rounded-full bg-rose-400"></div>
+                       <!-- Fixed Footer -->
+                       <div class="shrink-0 h-auto bg-white border-t border-rose-100 p-4 flex flex-col items-center gap-2">
+                          <div class="flex items-center justify-between w-full px-4 mb-2">
+                              <div class="text-[10px] text-rose-300 uppercase tracking-widest">Valentine's Collection</div>
+                              <div class="flex space-x-1">
+                                  <div class="w-2 h-2 rounded-full bg-rose-200"></div>
+                                  <div class="w-2 h-2 rounded-full bg-rose-300"></div>
+                                  <div class="w-2 h-2 rounded-full bg-rose-400"></div>
+                              </div>
                           </div>
-                       </div>
-        
-                       <div class="p-6 bg-white flex justify-center">
                           <button id="close-letter-btn-2" class="bg-rose-500 text-white shadow-md hover:shadow-lg rounded-full py-2 px-8 border border-rose-600 transition-transform hover:scale-105 text-sm shadow-rose-200">
                              Close Letter
                           </button>
