@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dear Venus...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              rose: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185', 500: '#f43f5e', 600: '#e11d48' },
+              blush: '#FADADD',
+            },
+            fontFamily: {
+              hand: ['Pacifico', 'cursive'],
+              body: ['Poppins', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-blush font-body overflow-hidden">
+    
+    <!-- Shared Layout Container -->
+    <div id="app-container" class="relative w-full h-screen flex flex-col items-center justify-center">
+        <!-- Floating Hearts Container -->
+        <div id="hearts-container" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+        
+        <!-- Vignette -->
+        <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(255,255,255,0.4)_100%)] z-0"></div>
+
+        <!-- Main Content -->
+        <div class="relative z-10 w-full max-w-md h-full sm:h-[90vh] sm:rounded-3xl sm:shadow-2xl sm:border-4 sm:border-white/50 bg-white/30 backdrop-blur-sm overflow-hidden flex flex-col p-6 items-center justify-center">
+            
+            <!-- Home Content -->
+            <div class="flex flex-col items-center w-full max-w-sm space-y-8 animate-fade-in">
+                <div class="text-center space-y-2">
+                    <div class="text-rose-400 text-sm font-semibold tracking-widest uppercase">Happy Valentine's</div>
+                    <h1 class="text-5xl font-hand text-rose-600 drop-shadow-sm">Dear Venus...</h1>
+                </div>
+
+                <div class="w-full space-y-4">
+                    <a href="playgames.html" class="app-btn w-full h-20 text-xl gap-3 flex items-center justify-center bg-white text-rose-500 shadow-md hover:shadow-lg rounded-2xl border-2 border-rose-100 transition-transform hover:scale-105">
+                        <div class="p-2 bg-rose-100 rounded-full">
+                            <i data-lucide="gamepad-2" class="w-6 h-6 text-rose-500"></i>
+                        </div>
+                        Play Games
+                    </a>
+
+                    <a href="readmessage.html" class="app-btn w-full h-20 text-xl gap-3 flex items-center justify-center bg-white text-rose-500 shadow-md hover:shadow-lg rounded-2xl border-2 border-rose-100 transition-transform hover:scale-105">
+                        <div class="p-2 bg-rose-100 rounded-full">
+                            <i data-lucide="heart" class="w-6 h-6 text-rose-500 fill-current"></i>
+                        </div>
+                        Read Message
+                    </a>
+
+                    <a href="viewpic.html" class="app-btn w-full h-20 text-xl gap-3 flex items-center justify-center bg-white text-rose-500 shadow-md hover:shadow-lg rounded-2xl border-2 border-rose-100 transition-transform hover:scale-105">
+                        <div class="p-2 bg-rose-100 rounded-full">
+                            <i data-lucide="camera" class="w-6 h-6 text-rose-500"></i>
+                        </div>
+                        View Pictures
+                    </a>
+                </div>
+
+                <a href="bloomflower.html" class="flex items-center gap-2 text-sm mt-4 bg-rose-500 text-white shadow-md hover:shadow-lg rounded-full py-2 px-4 border border-rose-600 transition-transform hover:scale-105">
+                    <i data-lucide="flower-2" class="w-4 h-4"></i>
+                    Bloom a Rose
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
